@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewDAO">
+	<resultMap id="review" type="review">
+		<id property="review_id" column="REVIEW_ID" />
+		<result property="review_prd_id" column="REVIEW_PRD_ID" />
+		<result property="review_writer_id" column="REVIEW_WRITER_ID" />
+		<result property="review_cont" column="REVIEW_CONT" />
+		<result property="review_star" column="REVIEW_STAR" />
+		<result property="review_date" column="REVIEW_DATE" />
+	</resultMap>
+
+	<insert id="writeReview">
+		INSERT INTO REVIEW (
+		REVIEW_ID,
+		REVIEW_PRD_ID,
+		REVIEW_WRITER_ID,
+		REVIEW_CONT,
+		REVIEW_STAR
+		) VALUES(
+		#{review_id},
+		#{review_prd_id},
+		#{review_writer_id},
+		#{review_cont},
+		#{review_star}
+		)
+	</insert>
+
+	<update id="setPaymentRe">
+		UPDATE PRODUCT_PAYMENT
+		SET
+		PAYMENT_RE = #{setRe}
+		WHERE
+		PAYMENT_ID = #{review_id}
+	</update>
+
+	<delete id="deleteReview">
+		DELETE FROM REVIEW
+		WHERE
+		REVIEW_ID = #{review_id}
+	</delete>
+
+	<select id="countReview" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM REVIEW
+		WHERE REVIEW_PRD_ID = #{prd_id}
+	</select>
+
+	<select id="countStar" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM REVIEW
+		WHERE REVIEW_PRD_ID = #{prd_id} AND REVIEW_STAR = #{star}
+	</select>
+
+	<select id="avgReview" resultType="java.lang.Double">
+		SELECT AVG(REVIEW_STAR)
+		FROM REVIEW
+		WHERE REVIEW_PRD_ID = #{prd_id}
+	</select>
+
+	<select id="listReview" resultMap="review">
+		SELECT * FROM (
+		SELECT ROWNUM AS RN, A.* FROM (
+		SELECT * FROM REVIEW
+		WHERE REVIEW_PRD_ID = #{prd_id}
+		ORDER BY REVIEW_DATE
+		DESC
+		) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+</mapper>

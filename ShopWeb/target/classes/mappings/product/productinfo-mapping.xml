@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductInfoDAO">
+	<resultMap id="productinfo" type="productinfo">
+		<result property="prd_brand" column="PRD_BRAND" />
+		<result property="prd_date" column="PRD_DATE" />
+		<result property="prd_name" column="PRD_NAME" />
+		<result property="prd_id" column="PRD_ID" />
+		<result property="prd_price" column="PRD_PRICE" />
+		<result property="prd_img" column="PRD_IMG" />
+		<result property="prd_coll" column="PRD_COLL" />
+		<result property="prd_lncp" column="PRD_LNCP" />
+		<result property="prd_mdlno" column="PRD_MDLNO" />
+		<result property="prd_color" column="PRD_COLOR" />
+		<result property="prd_lncd" column="PRD_LNCD" />
+		<result property="size250" column="SIZE250" />
+		<result property="size255" column="SIZE255" />
+		<result property="size260" column="SIZE260" />
+		<result property="size265" column="SIZE265" />
+		<result property="size270" column="SIZE270" />
+		<result property="size275" column="SIZE275" />
+		<result property="size280" column="SIZE280" />
+		<result property="size285" column="SIZE285" />
+		<result property="size290" column="SIZE290" />
+	</resultMap>
+
+	<select id="prdCheckID" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		PRODUCT_INFO
+		WHERE PRD_ID=#{prd_id}
+	</select>
+
+	<select id="cartCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		PRODUCT_CART
+		WHERE PRD_ID=#{prd_id} AND MEMBER_ID=#{member_id}
+	</select>
+
+	<select id="listSearchPrd" resultMap="productinfo">
+		SELECT * FROM (
+		SELECT ROWNUM AS RN, A.* FROM (
+		SELECT * FROM PRODUCT_INFO
+		WHERE (UPPER(PRD_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(PRD_NAME)
+		LIKE LOWER('%'||#{sPrd}||'%'))
+		<if test='sPrdB != ""'>
+			AND (PRD_BRAND = #{sPrdB})
+		</if>
+		<if test='sPrdC != ""'>
+			AND (PRD_COLL = #{sPrdC})
+		</if>
+		ORDER BY PRD_PRICE
+		<include refid="order" />
+		) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="countSearchPrd" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM PRODUCT_INFO
+		WHERE (UPPER(PRD_NAME) LIKE UPPER('%'||#{sPrd}||'%') OR LOWER(PRD_NAME)
+		LIKE LOWER('%'||#{sPrd}||'%'))
+		<if test='sPrdB != ""'>
+			AND (PRD_BRAND = #{sPrdB})
+		</if>
+		<if test='sPrdC != ""'>
+			AND (PRD_COLL = #{sPrdC})
+		</if>
+	</select>
+
+	<insert id="insertProduct">
+		<![CDATA[
+			INSERT INTO PRODUCT_INFO (
+				PRD_ID,
+				PRD_BRAND,
+				PRD_COLL,
+				PRD_NAME,
+				PRD_PRICE,
+				SIZE250,
+				SIZE255,
+				SIZE260,
+				SIZE265,
+				SIZE270,
+				SIZE275,
+				SIZE280,
+				SIZE285,
+				SIZE290,
+				]]>
+		<if test='prd_mdlno != ""'>
+			PRD_MDLNO,
+		</if>
+		<if test='prd_lncp != ""'>
+			PRD_LNCP,
+		</if>
+		<if test='prd_color != ""'>
+			PRD_COLOR,
+		</if>
+		<if test='prd_lncd != ""'>
+			PRD_LNCD,
+		</if>
+  				<![CDATA[
+				PRD_IMG
+			) VALUES (
+				#{prd_id},
+				#{prd_brand},
+				#{prd_coll},
+				#{prd_name},
+				#{prd_price},
+				#{size250},
+				#{size255},
+				#{size260},
+				#{size265},
+				#{size270},
+				#{size275},
+				#{size280},
+				#{size285},
+				#{size290},
+				]]>
+		<if test='prd_mdlno != ""'>
+			#{prd_mdlno},
+		</if>
+		<if test='prd_lncp != ""'>
+			#{prd_lncp},
+		</if>
+		<if test='prd_color != ""'>
+			#{prd_color},
+		</if>
+		<if test='prd_lncd != ""'>
+			#{prd_lncd},
+		</if>
+  				<![CDATA[
+				#{prd_img}
+			)
+		]]>
+	</insert>
+
+	<update id="updateProduct">
+		UPDATE PRODUCT_INFO
+		SET
+		PRD_BRAND = #{prd_brand},
+		PRD_COLL = #{prd_coll},
+		PRD_NAME = #{prd_name},
+		PRD_PRICE = #{prd_price},
+		<if test='prd_mdlno != ""'>
+			PRD_MDLNO = #{prd_mdlno},
+		</if>
+		<if test='prd_lncp != ""'>
+			PRD_LNCP = #{prd_lncp},
+		</if>
+		<if test='prd_color != ""'>
+			PRD_COLOR = #{prd_color},
+		</if>
+		<if test='prd_lncd != ""'>
+			PRD_LNCD = #{prd_lncd},
+		</if>
+		PRD_IMG = #{prd_img},
+		SIZE250 = #{size250},
+		SIZE255 = #{size255},
+		SIZE260 = #{size260},
+		SIZE265 = #{size265},
+		SIZE270 = #{size270},
+		SIZE275 = #{size275},
+		SIZE280 = #{size280},
+		SIZE285 = #{size285},
+		SIZE290 = #{size290}
+		WHERE
+		PRD_ID = #{prd_id}
+	</update>
+
+	<select id="productDetail" resultMap="productinfo">
+		<![CDATA[
+			SELECT * FROM PRODUCT_INFO WHERE PRD_ID=#{prd_id}
+		]]>
+	</select>
+
+	<delete id="deleteProduct">
+		DELETE FROM PRODUCT_INFO WHERE
+		PRD_ID = #{prd_id}
+	</delete>
+
+	<select id="getProductList" resultMap="productinfo">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM AS RN, A.* FROM (
+					SELECT * FROM PRODUCT_INFO WHERE PRD_BRAND=#{product.prd_brand} 
+					ORDER BY PRD_PRICE	]]>
+		<include refid="order" />
+					<![CDATA[
+				) A
+			) WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+
+	<select id="getAdminProductList" resultMap="productinfo">
+		<![CDATA[
+			SELECT PRD_BRAND, nvl(prd_img, '이미지 없음') AS PRD_IMG, PRD_NAME, PRD_ID, PRD_PRICE FROM (
+				SELECT ROWNUM AS RN, A.* FROM (
+					SELECT * FROM PRODUCT_INFO ORDER BY PRD_ID DESC
+				) A
+			) WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
+
+	<select id="getCountProduct" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PRODUCT_INFO WHERE PRD_BRAND=#{prd_brand}
+		]]>
+	</select>
+
+	<select id="getAdminCountProduct" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PRODUCT_INFO
+		]]>
+	</select>
+
+	<sql id="order">
+		${order}
+	</sql>
+</mapper>

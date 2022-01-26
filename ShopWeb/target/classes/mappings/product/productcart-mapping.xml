@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductCartDAO">
+	<resultMap id="productcart" type="productcart">
+		<result property="prd_img" column="PRD_IMG" />
+		<result property="prd_brand" column="PRD_BRAND" />
+		<result property="prd_coll" column="PRD_COLL" />
+		<result property="prd_name" column="PRD_NAME" />
+		<result property="prd_price" column="PRD_PRICE" />
+		<result property="member_id" column="MEMBER_ID" />
+		<result property="prd_id" column="PRD_ID" />
+		<result property="cart_id" column="CART_ID" />
+	</resultMap>
+	
+	<insert id="insertProductCart">
+		<![CDATA[
+			MERGE INTO PRODUCT_CART
+			USING DUAL ON (MEMBER_ID=#{member_id} AND PRD_ID=#{prd_id})
+			WHEN NOT MATCHED THEN
+			INSERT (MEMBER_ID, PRD_ID, CART_ID) 
+			VALUES (#{member_id}, #{prd_id}, CART_ID_SEQ.NEXTVAL)
+		]]>
+	</insert>
+	
+	<delete id="deleteProductCart">
+		<![CDATA[
+			DELETE PRODUCT_CART WHERE MEMBER_ID=#{member_id}
+		]]>
+	</delete>
+	
+	<delete id="deleteCart">
+		<![CDATA[
+			DELETE PRODUCT_CART WHERE MEMBER_ID=#{member_id} AND PRD_ID=#{prd_id}
+		]]>
+	</delete>
+	
+	<delete id="deleteThisProduct">
+		<![CDATA[
+			DELETE PRODUCT_CART WHERE MEMBER_ID=#{member_id} AND CART_ID=#{cart_id}
+		]]>
+	</delete>
+	
+	<select id="productCart" resultMap="productcart">
+		<![CDATA[
+			SELECT 
+				PRD_NAME, PRD_ID, PRD_PRICE, PRD_BRAND, PRD_COLL,
+				PRD_IMG, 
+				PRD_DATE
+			FROM PRODUCT_CART NATURAL JOIN PRODUCT_INFO
+			WHERE MEMBER_ID=#{member_id} ORDER BY PRD_ID
+		]]>
+	</select>
+</mapper>

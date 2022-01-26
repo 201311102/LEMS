@@ -1,0 +1,244 @@
+@charset "UTF-8";
+/*마이페이지 기본설정*/
+.mypageContainer {
+	margin: 0 auto;
+	padding: 40px 40px 3%;
+	max-width: 1280px;
+}
+
+.mypageContainer a {
+	text-decoration: none;
+}
+
+.navarea {
+	float: left;
+	width: 180px;
+	margin-right: 20px;
+}
+
+.navarea h2 {
+	padding-bottom: 30px;
+	margin: 0;
+}
+
+.navarea strong {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.navarea nav a {
+	color: black;
+}
+
+.navarea nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.navarea nav li {
+	list-style: none;
+	margin-top: 12px;
+}
+
+.navarea nav ul li a {
+	font-size: 15px;
+	color: #9D9D9D;
+	line-height: 18px;
+}
+
+nav div:nth-child(3) {
+	margin-top: 40px;
+}
+
+.mypageContent {
+	display: inline-block;
+	width: 1000px;
+}
+
+.mypageTitle {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 16px;
+}
+
+.mypageTitle h3 {
+	margin: 0;
+}
+
+/****구매내역 설정*****/
+.mypageContent h2 {
+	margin-bottom: 22px;
+	padding-bottom: 19px;
+	border-bottom: 3px solid #222;
+}
+
+.dateAndID {
+	margin-top: 22px;
+}
+
+.dateAndID  span {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 600;
+	color: #666;
+}
+
+.dateAndID span:nth-child(2) {
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.prdBox {
+	border: 1px solid #b5b5b5;
+	margin-top: 10px;
+	padding: 20px;
+	background-color: #fafafa;
+}
+
+.imgBox {
+	width: 60px;
+	height: 60px;
+	border-radius: 15px;
+	display: inline-block;
+}
+
+.imgBox img {
+	width: 60px;
+	height: 70px;
+	margin-top: 0;
+	margin-left: 5px;
+}
+
+.prdBox tr {
+	position: relative;
+}
+
+.prdBox tr td:nth-child(3) {
+	position: absolute;
+	top: 23px;
+	left: 600;
+}
+
+.prdBox tr td:nth-child(4) {
+	position: absolute;
+	left: 750px;
+	top: 25px;
+}
+
+.prdBox tr td:nth-child(5) {
+	position: absolute;
+	left: 840px;
+	top: 18px;
+}
+
+.prdBox td:nth-child(5n+1) {
+	padding-right: 15px;
+}
+
+.prdInfoBox {
+	height: 72px;
+}
+
+.prdModel, .prdPrice {
+	font-family: 'Roboto', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	padding-bottom: 0;
+}
+
+.delivery {
+	width: 80px;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+}
+
+.prdName {
+	font-family: 'Roboto', sans-serif;
+	font-size: 13px;
+	height: 33%;
+	padding-top: 9px;
+}
+
+.prdSize {
+	padding-top: 0px;
+	font-size: 13px;
+}
+
+.prdPrice {
+	width: 100px;
+}
+
+.inputButtonStyle {
+	padding: 1px 12px;
+	background-color: white;
+	font-size: 12px;
+	border-radius: 10px;
+	border: 1px solid #d3d3d3;
+	height: 31px;
+	margin-right: 5px;
+}
+
+.inputButtonStyle:active {
+	background: #d3d3d3;
+}
+
+.review-dropdown {
+	display: none;
+	padding-top: 30px;
+}
+
+.review-dropdown table {
+	border-spacing: 0;
+}
+
+.review-dropdown th {
+	font-weight: normal;
+	padding: 20px 30px;
+	background: #F6F6F6;
+	font-size: 12px;
+	width: 90px;
+	border-top: 1px solid #dddfe1;
+	border-bottom: 1px solid #dddfe1;
+}
+
+.review-dropdown td {
+	padding: 10px 0 10px 10px;
+	border-top: 1px solid #dddfe1;
+	border-bottom: 1px solid #dddfe1;
+}
+
+.review-dropdown textarea {
+	height: 202px;
+	outline: none;
+	border: none;
+	resize: none;
+}
+
+.reviewArea {
+	padding: 8px 10px 9px;
+	border: 1px solid #dddfe1;
+}
+
+.show {
+	display: block;
+}
+
+.register {
+	width: 15%;
+	height: 32px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #fff;
+	background-color: #222;
+	border: none;
+}
+
+.register:active {
+	opacity: 0.8;
+}
+/*페이지 네비게이션*/
+div[align="center"] {
+	margin-top: 30px;
+}

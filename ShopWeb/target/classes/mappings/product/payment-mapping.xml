@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PaymentDAO">
+	<resultMap id="payment" type="payment">
+		<result property="payment_id" column="PAYMENT_ID" />
+		<result property="member_id" column="MEMBER_ID" />
+		<result property="prd_id" column="PRD_ID" />
+		<result property="member_zipcode" column="MEMBER_ZIPCODE" />
+		<result property="member_faddr" column="MEMBER_FADDR" />
+		<result property="member_laddr" column="MEMBER_LADDR" />
+		<result property="member_phone" column="MEMBER_PHONE" />
+		<result property="credit_number" column="CREDIT_NUMBER" />
+		<result property="prd_img" column="PRD_IMG" />
+		<result property="prd_name" column="PRD_NAME" />
+		<result property="prd_price" column="PRD_PRICE" />
+		<result property="payment_msg" column="PAYMENT_MSG" />
+		<result property="payment_size" column="PAYMENT_SIZE" />
+		<result property="payment_re" column="PAYMENT_RE" />
+		<result property="payment_reciever" column="PAYMENT_RECIEVER" />
+		<result property="payment_delivery" column="PAYMENT_DELIVERY" />
+	</resultMap>
+
+	<insert id="insertPayment">
+		<![CDATA[
+			INSERT INTO PRODUCT_PAYMENT (
+			PAYMENT_ID, 
+			MEMBER_ID, 
+			PRD_ID, 
+			PRD_PRICE, 
+			MEMBER_ZIPCODE, 
+			MEMBER_FADDR, 
+			MEMBER_LADDR, 
+			MEMBER_PHONE, 
+			CREDIT_NUMBER, 
+			PAYMENT_MSG, 
+			PAYMENT_SIZE,
+			PAYMENT_RECIEVER
+			)
+			VALUES (
+			PAYMENT_SEQ.NEXTVAL, 
+			#{member_id}, 
+			#{prd_id}, 
+			#{prd_price}, 
+			#{member_zipcode}, 
+			#{member_faddr}, 
+			#{member_laddr}, 
+			#{member_phone}, 
+			#{credit_number}, 
+			#{payment_msg}, 
+			#{payment_size},
+			#{payment_reciever}
+			)
+		]]>
+	</insert>
+
+	<delete id="deleteCartPayment">
+		<![CDATA[
+			DELETE PRODUCT_CART WHERE MEMBER_ID=#{member_id} AND PRD_ID=#{prd_id}
+		]]>
+	</delete>
+
+	<select id="paymentProduct" resultMap="payment">
+		<![CDATA[
+			SELECT *
+			FROM PRODUCT_INFO NATURAL JOIN MEMBER
+			WHERE PRD_ID=#{payment.prd_id} AND MEMBER_ID=#{payment.member_id}
+		]]>
+	</select>
+
+	<select id="cartPaymentProduct" resultMap="payment">
+		<![CDATA[
+			SELECT * 
+			FROM PRODUCT_CART NATURAL JOIN PRODUCT_INFO 
+			WHERE MEMBER_ID=#{payment.member_id}
+		]]>
+	</select>
+
+	<update id="reduceProduct">
+		UPDATE PRODUCT_INFO
+		SET
+		<include refid="size" />
+		=
+		<include refid="size" />
+		-1
+		WHERE
+		PRD_ID=#{prd_id}
+	</update>
+
+	<update id="doDelivery">
+		UPDATE PRODUCT_PAYMENT
+		SET
+		PAYMENT_DELIVERY = 'Y'
+		WHERE
+		PAYMENT_ID=#{payment_id}
+	</update>
+
+	<select id="countDelevery" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		PRODUCT_PAYMENT WHERE PAYMENT_DELIVERY = 'N'
+	</select>
+
+	<select id="deliveryPayment" resultType="payment">
+		SELECT * FROM(
+		SELECT ROWNUM AS RN, A.* FROM (
+		SELECT * FROM (
+		SELECT PRD_ID, PAYMENT_ID, PRD_IMG, PRD_NAME, PAYMENT_SIZE, PAYMENT_DATE,
+		PAYMENT_RECIEVER, MEMBER_PHONE, MEMBER_FADDR, MEMBER_LADDR, PRD_PRICE
+		FROM PRODUCT_PAYMENT NATURAL JOIN PRODUCT_INFO
+		WHERE PAYMENT_DELIVERY = 'N'
+		AND PAYMENT_DATE BETWEEN ADD_MONTHS(SYSDATE, -3) AND SYSDATE
+		) ORDER BY PAYMENT_ID ASC
+		) A
+		) WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+	<sql id="size">
+		${size}
+	</sql>
+
+</mapper>

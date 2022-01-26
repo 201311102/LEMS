@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+.paymentBody {
+	margin: 0 auto;
+	max-width: 620px;
+	margin-bottom: 3%;
+}
+
+th {
+	font-weight: normal;
+	text-align: left;
+	padding-left: 0;
+}
+
+.container {
+	background-color: #fafafa;
+	padding: 32px;
+	margin-bottom: 5px;
+	border: 1px solid #b5b5b5;
+	border-radius: 20px;
+}
+
+.container h3 {
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
+.input {
+	width: 45%;
+	height: 40px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	outline: none;
+	border-color: #b5b5b5;
+}
+
+.inputButtonStyle {
+	padding: 1px 12px;
+	background-color: white;
+	font-size: 12px;
+	border-radius: 10px;
+	border: 1px solid #d3d3d3;
+	height: 31px;
+}
+
+.prdBox td[rowspan="3"] {
+	padding-right: 15px;
+	padding-left: 0;
+}
+
+.imgBox {
+	width: 70px;
+	height: 70px;
+	border: 1px solid #b5b5b5;
+	border-radius: 15px;
+	display: inline-block;
+}
+
+.imgBox img {
+	width: 60px;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+
+.prdModel, .prdSize {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	padding-bottom: 0;
+}
+
+.prdName {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	padding-top: 0;
+}
+
+.memberInfo th {
+	padding-right: 20px;
+	font-size: 13px;
+	color: #525252;
+}
+
+.memberInfo label {
+	font-size: 14px;
+}
+
+.deliveryInfo th {
+	padding-right: 30px;
+	font-size: 13px;
+	color: #525252;
+}
+
+.deliveryInfo label {
+	font-size: 14px;
+}
+
+.paymentPriceInfo td {
+	text-align: right;
+}
+
+#texta {
+	margin-top: 25px;
+	border: 2px solid #F7F6F2;
+}
+
+.creditInfo {
+	font-size: 14px;
+}
+
+#creditPay {
+	margin-top: 15px;
+}
+
+.paymentPrice th {
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 18px;
+}
+
+.paymentPrice td {
+	font-size: 20px;
+	line-height: 26px;
+	font-weight: 600;
+	color: #f15746;
+}
+
+input[value="결제하기"] {
+	width: 550px;
+	display: inline-block;
+	border-radius: 15px;
+	height: 50px;
+	color: white;
+	background-color: #000000;
+	border: none;
+}
+
+input[value="결제하기"]:active {
+	opacity: 0.6;
+}

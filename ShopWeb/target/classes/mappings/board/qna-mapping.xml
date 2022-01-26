@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QnADAO">
+
+	<!-- 글쓰기 -->
+	<insert id="createQnA">
+		INSERT INTO QNA (
+		QNO,
+		QTITLE,
+		QCONTENT,
+		WRITER,
+		REGDATE
+		) VALUES(
+		QNA_SEQ.NEXTVAL,
+		#{qtitle},
+		#{qcontent},
+		#{writer},
+		sysdate
+		)
+	</insert>
+
+	<!-- 글 수정 -->
+	<update id="updateQnA">
+		UPDATE QNA
+		SET
+		QTITLE = #{qtitle},
+		QCONTENT =
+		#{qcontent},
+		REGDATE = sysdate
+		WHERE
+		QNO = #{qno}
+	</update>
+
+	<!-- 글 답변 -->
+	<update id="replyQnA">
+		UPDATE QNA
+		SET
+		RECONTENT = #{recontent},
+		ISRE = 'Y',
+		REDATE = sysdate
+		WHERE
+		QNO = #{qno}
+	</update>
+
+	<!-- 글 답변 수정 -->
+	<update id="updateReply">
+		UPDATE QNA
+		SET
+		RECONTENT = #{recontent},
+		REDATE =
+		sysdate
+		WHERE
+		QNO = #{qno}
+	</update>
+
+	<!-- 글 삭제 -->
+	<delete id="deleteQnA">
+		UPDATE QNA SET SHOW='N' WHERE QNO = #{qno}
+	</delete>
+
+	<!-- 글 삭제 체크 -->
+	<select id="checkQnA" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM QNA WHERE QNO = #{qno} AND SHOW = 'Y'
+	</select>
+
+	<!-- 게시글 보기 -->
+	<select id="readQnA" resultType="qna">
+		SELECT
+		*
+		FROM
+		QNA
+		WHERE
+		QNO = #{qno} AND SHOW = 'Y'
+	</select>
+
+	<!-- 이전글 -->
+	<select id="previousQ" resultType="qna">
+	<![CDATA[
+	SELECT * FROM QNA WHERE QNO = 
+	(SELECT MAX(QNO) FROM QNA WHERE SHOW='Y' AND QNO < #{qno})
+	]]>
+	</select>
+
+	<!-- 다음글 -->
+	<select id="nextQ" resultType="qna">
+	<![CDATA[
+	SELECT * FROM QNA WHERE QNO = 
+	(SELECT MIN(QNO) FROM QNA WHERE SHOW='Y' AND QNO > #{bno})
+	]]>
+	</select>
+
+	<!-- 목록 -->
+	<select id="listAllQnA" resultType="qna">
+		SELECT * FROM
+		(SELECT ROWNUM AS RN, A.* FROM (SELECT * FROM (
+		SELECT * FROM QNA
+		<include refid="search"></include>
+		) ORDER BY QNO DESC, REGDATE DESC) A )
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+	<!-- 게시글 갯수 -->
+	<select id="getCountQnA" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM QNA
+		<include refid="search"></include>
+	</select>
+
+	<!-- 검색조건 -->
+	<sql id="search">
+		<choose>
+			<when test="searchOption == 'ALL'">
+				WHERE SHOW='Y' AND (
+				QCONTENT LIKE
+				LOWER('%'||#{keyword}||'%')
+				OR QCONTENT LIKE
+				UPPER('%'||#{keyword}||'%')
+				OR QTITLE LIKE
+				LOWER('%'||#{keyword}||'%')
+				OR QTITLE LIKE
+				UPPER('%'||#{keyword}||'%')
+				)
+			</when>
+			<otherwise>
+				WHERE SHOW='Y' AND
+				(${searchOption} LIKE LOWER('%'||#{keyword}||'%') OR
+				${searchOption} LIKE
+				UPPER('%'||#{keyword}||'%'))
+			</otherwise>
+		</choose>
+	</sql>
+
+</mapper>

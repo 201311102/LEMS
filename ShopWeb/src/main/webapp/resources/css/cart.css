@@ -1,0 +1,200 @@
+@charset "UTF-8";
+
+/*마이페이지 기본설정*/
+.mypageContainer {
+	margin: 0 auto;
+	padding: 40px 40px 3%;
+	max-width: 1280px;
+}
+
+.mypageContainer a {
+	text-decoration: none;
+}
+
+.navarea {
+	float: left;
+	width: 180px;
+	margin-right: 20px;
+}
+
+.navarea h2 {
+	padding-bottom: 30px;
+	margin: 0;
+}
+
+.navarea strong {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.navarea nav a {
+	color: black;
+}
+
+.navarea nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.navarea nav li {
+	list-style: none;
+	margin-top: 12px;
+}
+
+.navarea nav ul li a {
+	font-size: 15px;
+	color: #9D9D9D;
+	line-height: 18px;
+}
+
+nav div:nth-child(3) {
+	margin-top: 40px;
+}
+
+.mypageContent {
+	display: inline-block;
+	width: 1000px;
+	min-height: 300px;
+}
+
+.mypageTitle {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 16px;
+}
+
+.mypageTitle h3 {
+	margin: 0;
+}
+
+.mypageContent h2 {
+	margin: 0;
+	padding-bottom: 19px;
+	border-bottom: 3px solid #222;
+}
+
+/*관심상품 목록*/
+table {
+	display: inline-block;
+}
+
+.prdBox {
+	border-bottom: 1px solid #b5b5b5;
+	position: relative;
+	margin-top: 5px;
+}
+
+.prdBox td[rowspan="3"] {
+	padding-right: 15px;
+	padding-left: 0;
+}
+
+.imgBox {
+	width: 70px;
+	height: 70px;
+	border: 1px solid #D3DEDC;
+	border-radius: 15px;
+	display: inline-block;
+}
+
+.imgBox img {
+	width: 60px;
+	height: 70px;
+	margin-top: 0;
+	margin-left: 5px;
+}
+
+.prdbrand {
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	padding: 0;
+}
+
+.prdcoll {
+	font-family: 'Roboto', sans-serif;
+	font-size: 13px;
+	padding: 0;
+}
+
+.prdName {
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	padding: 0;
+}
+
+.buydeletebutton {
+	position: absolute;
+	right: 0;
+	top: 19px;
+}
+/*구매버튼*/
+.buydeletebutton input:nth-child(1) {
+	width: 60px;
+	height: 59px;
+	font-size: 18px;
+	font-weight: 900;
+	padding-left: 0;
+	padding-right: 0;
+	border-radius: 10px 0 0 10px;
+	border: none;
+	background-color: #ef6253;
+	color: white;
+}
+
+.buydeletebutton input:nth-child(2) {
+	float: right;
+	width: 92px;
+	height: 59px;
+	font-size: 15px;
+	padding-left: 0;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	border-left: 0.1px solid black;
+	border-radius: 0 10px 10px 0;
+	border: none;
+	background-color: #ef6253;
+	color: white;
+}
+/*상품삭제버튼*/
+.buydeletebutton input:nth-child(3) {
+	position: absolute;
+	right: 0;
+	top: 59px;
+	border: none;
+	background: white;
+	text-decoration: underline;
+	font-size: 13px;
+}
+/*전체삭제버튼*/
+.cartClear {
+	text-align: center;
+}
+
+.cartClear input {
+	border: none;
+	background: white;
+	text-decoration: underline;
+	margin-top: 10px;
+}
+
+.inputButtonStyle {
+	padding: 1px 12px;
+	background-color: #222;
+	font-size: 12px;
+	font-weight: bold;
+	color: white;
+	border-radius: 10px;
+	border: none;
+	height: 31px;
+	margin-right: 5px;
+}
+
+.inputButtonStyle:active {
+	background: #d3d3d3;
+}
+
+.info td {
+	width: 500px;
+	padding-left: 20px;
+}

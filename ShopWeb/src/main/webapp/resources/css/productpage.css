@@ -1,0 +1,408 @@
+@CHARSET "UTF-8";
+
+::-ms-input-placeholder {
+	color: #a8a8a8;
+}
+
+::-webkit-input-placeholder {
+	color: #a8a8a8;
+}
+
+::-moz-placeholder {
+	color: #a8a8a8;
+}
+
+div {
+	margin: 0;
+	padding: 0;
+}
+
+.productdetail p {
+	margin: 5px 0;
+	padding: 0;
+}
+
+/* body {
+	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial,
+		sans-serif;
+	font-size: 13px;
+	padding: 0;
+	margin: 0;
+	padding: 20px;
+	background: #fff;
+} */
+h1 {
+	width: 100%;
+	margin: 0px auto;
+	text-align: center;
+}
+
+a {
+	color: gray;
+	text-decoration: none;
+}
+
+.btn {
+	border: 0px;
+	outline: none;
+	background-color: transparent;
+	z-index: 100;
+}
+
+.contents {
+	top: 40px;
+	width: 100%;
+	height: 650px;
+	background-color: #fff;
+	margin: 0 auto;
+}
+
+.productdetail {
+	max-width: 1250px;
+	height: 540px;
+	margin: 0 auto;
+	padding: 3% 0;
+}
+
+.productLeft {
+	box-sizing: border-box;
+	float: left;
+	width: 50%;
+	border-right: 1px solid #b5b5b5;
+	padding-right: 3.334%;
+	float: left;
+}
+
+.productLeft img {
+	background: #fafafa;
+	width: 100%;
+}
+
+.productRight {
+	box-sizing: border-box;
+	position: relative;
+	float: right;
+	width: 50%;
+	padding-left: 3.334%;
+}
+
+.p1 {
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	border-bottom: 2px solid #222;
+}
+
+.p2 {
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-size: 14px;
+	color: #b5b5b5;
+	margin-bottom: 0px;
+}
+
+.p3 {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.p4 {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.p5 {
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+	text-align: left;
+	margin-bottom: 0px;
+}
+
+.p6 {
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: left;
+}
+
+.detail {
+	width: 700px;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+.detail th {
+	font-size: 30px;
+}
+
+.detail td {
+	font-size: 20px;
+}
+
+.danger {
+	max-width: 1250px;
+	margin: 0 auto;
+	padding-bottom: 3%;
+}
+
+.danger th {
+	font-size: 30px;
+}
+
+.danger td {
+	font-size: 30px;
+}
+
+/* 구매랑 장바구니 버튼 css */
+.w-btn-outline {
+	width: 47%;
+	height: 52px;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	border: 1px solid #d7d7d7;
+}
+
+.w-btn-black {
+	border: none;
+	background-color: #222;
+	color: #fff;
+}
+
+.w-btn-gray {
+	background-color: #a3a1a1;
+	color: #e3dede;
+}
+
+.w-btn-outline:active {
+	opacity: 0.8;
+}
+
+/* 상품 정보 표 */
+.productInfo {
+	margin-top: 10px;
+	width: 100%;
+	padding: 1% 0;
+}
+
+table.type11 {
+	width: 100%;;
+	border-collapse: collapse;
+	border-spacing: 1px;
+	text-align: center;
+	line-height: 1.5;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-top: 1px solid #ccc;
+}
+
+table.type11 th {
+	padding: 5px;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+table.type11 td {
+	height: 50px;
+	padding: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+/* 신발 사이즈 라디오 버튼 */
+.size {
+	width: 100%;
+	border-bottom: 1px solid #b5b5b5;
+	padding: 1% 0;
+	margin-top: 10px;
+}
+
+.price {
+	margin-top: 10px;
+	width: 100%;
+	padding: 1% 0;
+}
+
+.deliverinfo {
+	margin-top: 10px;
+	width: 100%;
+	padding: 1% 0;
+}
+
+select {
+	width: 80px;
+	padding: .8em .5em;
+	border: none;
+	background: url('arrow.jpg') no-repeat 95% 50%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background:
+		url('https://t1.daumcdn.net/cfile/tistory/99761B495C84AA8716')
+		no-repeat right 9px center;
+	padding: .8em .5em;
+}
+
+select:focus {
+	outline: none;
+}
+
+/* 리뷰 테이블 */
+table.review {
+	table-layout: fixed;
+	width: 100%;
+	word-break: break-all;
+	height: auto;
+	border-collapse: collapse;
+	border-spacing: 1px;
+	text-align: center;
+	line-height: 1.5;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-top: 1px solid #ccc;
+}
+
+table.review th {
+	/* width: auto; */
+	padding: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+table.review td {
+	width: auto;
+	padding: 30px 0px;
+	font-size: 15px;
+	border-bottom: 1px solid #ccc;
+}
+
+.th-1 {
+	width: 60px;
+}
+
+/* .th-2{
+	width: 500px;
+} */
+.th-3 {
+	width: 90px;
+}
+
+.th-4 {
+	width: 90px;
+}
+
+.th-5 {
+	width: 100px;
+}
+
+.td-1 {
+	text-align: left;
+}
+
+/* 페이징 */
+.paging {
+	text-align: center;
+}
+
+/* 별점 평점 */
+
+/* 평점 그래프 */
+.sf_score_stars {
+	width: calc(100% - 370px);
+	display: inline-block;
+	float: right;
+	padding: 0px;
+}
+
+.sf_score_stars li {
+	list-style: none;
+	color: thistle;
+	font-size: 0.8125rem;
+	display: block;
+	width: 100%;
+	height: 16px;
+	margin: 10px 0px;
+	position: relative;
+}
+
+.sf_score_star_text {
+	color: black;
+	float: left;
+	font-size: 0.68rem;
+	left: 0;
+}
+
+.sf_score_bar {
+	background: #f6f6f6;
+	width: calc(100% - 100px);
+	height: 16px;
+	margin: 0px 10px;
+	float: left;
+}
+
+.sf_score_bar_gage {
+	height: 16px;
+	-webkit-transition: width 2s;
+	transition: width 2s;
+	width: 0%;
+}
+
+.star.pin_custom_font_color {
+	color: #e27e6d !important;
+}
+
+.sf_score_bar_gage.pin_custom_background_color {
+	background-color: #000 !important;
+	color: #000 !important;
+}
+
+.sf_review_smart_Percentage.pin_custom_font_color {
+	background-color: !important;
+	color: #e27e6d !important;
+}
+
+/* 별표출력 */
+.stars-container {
+	position: relative;
+	display: inline-block;
+	color: transparent;
+}
+
+.stars-container:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '★★★★★';
+	color: lightgray;
+}
+
+.stars-container:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '★★★★★';
+	color: #000000;
+	overflow: hidden;
+}
+
+.stars:after {
+	width: var(--star_width);
+}
+
+.stars-zero:after {
+	width: 0%;
+}
+
+.btnbtn {
+	width: 100%;
+	padding: 1% 0;
+}
+
+.imgbox{
+	width:50px;
+	float:left;
+}

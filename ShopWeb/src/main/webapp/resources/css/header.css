@@ -1,0 +1,201 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding-top: 172px;
+	width: 1903px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+li {
+	list-style: none;
+}
+
+hr {
+	margin: 0;
+	border: 0.8px solid #F7F6F2;
+}
+
+hr:nth-child(3) {
+	margin-bottom: 0;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 2%;
+}
+
+.logo {
+	width: 200px;
+}
+
+.nav_links {
+	list-style: none;
+}
+
+.nav_links li {
+	display: inline-block;
+	margin-right: 20px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.nav_links li:nth-child(4) {
+	margin-right: 0;
+}
+
+#topMenu {
+	float: right;
+	padding: 0 2%;
+	margin: 4px 0;
+}
+
+#topMenu ul {
+	margin: 0;
+}
+
+#topMenu ul li {
+	list-style: none;
+	display: inline-block;
+	margin-left: 15px;
+	font-weight: 100;
+}
+
+#topMenu ul li a {
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.wrap {
+	margin-left: 400px;
+}
+
+.search {
+	width: 100%;
+	display: flex;
+	margin: 0 auto;
+}
+
+.searchTerm {
+	width: 350px;
+	/* height:40px; */
+	border: none;
+	border: 1px solid #D3DEDC;
+	padding: 0 10px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	outline: none;
+	color: #C8C6C6;
+}
+
+.searchTerm:focus {
+	color: #00B4CC;
+}
+
+.searchButton {
+	width: 40px;
+	height: 40px;
+	border: 1px solid #C8C6C6;
+	border-top: none;
+	border-right: none;
+	background: white;
+	text-align: center;
+	border-left: none;
+	background-image:
+		url("https://endlessicons.com/wp-content/uploads/2015/08/search-icon-2.png");
+	border-radius: 0;
+	cursor: pointer;
+}
+
+.searchButton img {
+	width: 25px;
+	height: 25px;
+	border-left:
+}
+
+#nav {
+	text-align: center;
+	position: relative;
+	width: 1400px;
+	left: 50%;
+	margin-left: -700px;
+}
+
+#nav ul {
+	top: 10px;
+	margin: 0;
+	z-index: 200;
+	padding: 15px 5px;
+	list-style: none;
+	border-width: 100%;
+}
+
+#nav ul li {
+	position: relative;
+	font: bold 15px/45px sans-serif;
+	display: inline-block;
+	margin-right: -4px;
+	cursor: pointer;
+	width: 230px;
+	height: 40px;
+	transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+	display: inline-block;
+}
+
+#nav ul li:hover {
+	width: 230px;
+}
+
+#nav ul li:hover ul {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+
+#nav ul li ul {
+	position: absolute;
+	top: 39px;
+	left: 0;
+	width: 230px;
+	padding: 0px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transiton: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-ms-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	-transition: opacity 0.2s;
+	-webkit-box-shadow: none;
+	border: 1px solid##F7F6F2;
+	border-top: none;
+}
+
+#nav ul li ul li {
+	display: block;
+	background: white;
+	width: 230px;
+}
+
+#nav ul li ul li:hover {
+	background: #e6e6e6;
+}
+
+#nav a {
+	color: #fff;
+	text-decoration: none;
+}
